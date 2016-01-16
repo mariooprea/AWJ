@@ -4,10 +4,11 @@
   <title>My application</title>
   <link rel="stylesheet" media="all" href="css/bootstrap.min.css">
   <link rel="stylesheet" media="all" href="css/custom.css">
+  
 </head>
 <body>
   <div class="container">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -16,13 +17,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="">AWJ Base Project</a>
+          <a class="navbar-brand" href="#">AWJ Base Project</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">Resource 1</a></li>
-            <li><a href="#">Resource 2</a></li>
+            <li><a href="#Laptop">Laptopuri</a></li>
+            <li><a href="#Accesorii">Accesorii</a></li>
+			<li><a href="#Telefoane">Telefoane</a></li>
           </ul>
         </div>
       </div>
@@ -31,9 +33,11 @@
 
   <hr/>
 
+  
   <div class="container">
     <div ng-controller="HomeController">
-      <h1 ng-click="doStuff()">{{ helloWorld }}</h1>
+      <h1>{{ helloWorld }}</h1>
+      <h1>Tema4</h1>
     </div>
   </div>
 
@@ -41,16 +45,19 @@
 
   <!-- /resources1 -->
   <div class="container" ng-controller="HomeController">
-    <h1>Resource 1</h1>
-    <h2>List all resources</h2>
+    <h1 id="Laptop">Studenti</h1>
+    <h2>Lista Laptopuri</h2>
     <table class="table table-bordered">
       <tr>
-        <th ng-repeat="key in keys">{{ key }}</th>
+        <th>Producator</th>
+        <th>ID</th>
+        <th>Model</th>
         <th style="width:210px;">Options</th>
       </tr>
-      <tr ng-repeat="item in persoane.data" data-id="{{ item.id }}">
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
+      <tr ng-repeat="Laptop in Laptopuri">
+        <td>{{Laptop.producator}}</td>
+        <td>{{Laptop.id}}</td>
+        <td>{{Laptop.Model}}</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -58,148 +65,94 @@
               <span class="glyphicon glyphicon-folder-open"></span>
             </span>
           </a>
-          <button ng-click="setUpdatePerson(item)" class="btn btn-info btn-xs">
+          <a href="">
+            <span class="label label-primary">
               Edit
               <span class="glyphicon glyphicon-edit"></span>
+            </span>
           </a>
-          <button ng-click="deletePersoana(item.id)" class="btn btn-danger btn-xs">
+          <a href="">
+            <span class="label label-danger">
               Remove
               <span class="glyphicon glyphicon-remove"></span>
-            </button>
+            </span>
           </a>
         </td>
       </tr>
     </table>
 
-    <h2>Add new person</h2>
-    <table>
-      <tr>
-        <td>ID</td>
-        <td><input type="text" class="form-control" ng-model="person.id"/></td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td><input type="text" class="form-control" ng-model="person.name"/></td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <button ng-click="addPersoana(person)" class="btn btn-primary btn-xs">Add</button>
-        </td>
-      </tr>
-    </table>
-
-
-    <h2>Edit a person</h2>
-    <table>
-      <tr>
-        <td>ID</td>
-        <td><input type="text" ng-model="editPerson.id"></td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td><input type="text" ng-model="editPerson.name"></td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <button class="btn btn-info btn-xs" ng-click="updatePerson()">
-            Update
-          </button>
-        </td>
-      </tr>
-    </table>
-<!--
     <div class="row">
       <div class="col-md-3">
-        <h2>Edit a resource1</h2>
+        <h2 >Editeaza Laptop</h2>
         <form action="" method="">
           <div class="form-group">
-            <label for="attribute1">Attribute 1</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Attribute 1">
+            <label for="attribute1">Producator</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Atributul 1">
           </div>
           <div class="form-group">
-            <label for="attribute2">Attribute 2</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Attribute 2">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Atributul 2">
           </div>
           <div class="form-group">
-            <label for="attribute3">Attribute 3</label>
-            <input type="text" class="form-control" id="attribute3" placeholder="Attribute 3">
+            <label for="attribute3">Model</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Atributul 3">
           </div>
-          <div class="form-group">
-            <label for="attribute4">Attribute 4</label>
-            <input type="text" class="form-control" id="attribute4" placeholder="Attribute 4">
-          </div>
-          <button type="submit" class="btn btn-info">Save</button>
+          <button type="submit" class="btn btn-info">Salveaza</button>
         </form>
       </div>
 
 
       <div class="col-md-3 col-md-offset-6">
-        <h2>Add a resource1</h2>
+        <h2>Adauga Laptop</h2>
         <form action="" method="">
           <div class="form-group">
-            <label for="attribute1">Attribute 1</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Attribute 1">
+            <label for="attribute1">Producator</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Atributul 1">
           </div>
           <div class="form-group">
-            <label for="attribute2">Attribute 2</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Attribute 2">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Atributul 2">
           </div>
           <div class="form-group">
-            <label for="attribute3">Attribute 3</label>
-            <input type="text" class="form-control" id="attribute3" placeholder="Attribute 3">
+            <label for="attribute3">Model</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Atributul 3">
           </div>
-          <div class="form-group">
-            <label for="attribute4">Attribute 4</label>
-            <input type="text" class="form-control" id="attribute4" placeholder="Attribute 4">
-          </div>
-          <button type="submit" class="btn btn-success">Add</button>
+          <button type="submit" class="btn btn-success">Adauga</button>
         </form>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <h2>Show a resource1</h2>
+        <h2>Afiseaza Laptop</h2>
       </div>
       <div class="col-md-2">
-        <img src="http://lorempixel.com/200/200/technics/?id=1" class="img-thumbnail"/>
+        <img src="http://rog.asus.com/wp-content/uploads/2013/06/PR-ASUS-ROG-G750-side-view.jpg" class="img-thumbnail"/>
       </div>
       <div class="col-md-10">
-        <h1>Attribute 1</h1>
-        <p>Attribute 2, Attribute 3</p>
-        <h3>Sub resource</h3>
-        <table class="table table-bordered table-striped">
-          <tr>
-            <th>Attribute 5</th>
-            <th>Attribute 6</th>
-          </tr>
-          <tr>
-            <td>Lorem ipsum</td>
-            <td>Lorem</td>
-          </tr>
-          <tr>
-            <td>Lorem ipsum dolor</td>
-            <td>Sir</td>
-          </tr>
-        </table>
+        <h1>Asus</h1>
+        <p>1, RoG</p>
       </div>
     </div>
   </div>
 
   <hr/>
 
+  <!-- /resources2-->
   <div class="container">
-    <h1>Resource 2</h1>
-    <h2>List all resources</h2>
+    <h1 id="Accesorii">Accesorii</h1>
+    <h2>Listeaza accesorii</h2>
     <table class="table table-bordered">
       <tr>
-        <th>Attribute 1</th>
-        <th>Attribute 2</th>
+        <th>Produs</th>
+        <th>ID</th>
+		<th>Pret</th>
         <th style="width:210px;">Options</th>
       </tr>
       <tr>
-        <td>Lorem</td>
-        <td>Sit</td>
+        <td>Casti </td>
+        <td>1</td>
+		<td>200</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -222,8 +175,9 @@
         </td>
       </tr>
       <tr>
-        <td>Ipsum</td>
-        <td>Lorem</td>
+        <td>HDD</td>
+        <td>2</td>
+		<td>250</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -246,8 +200,9 @@
         </td>
       </tr>
       <tr>
-        <td>Sit</td>
-        <td>Dolor</td>
+        <td>Mouse</td>
+        <td>4</td>
+		<td>150</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -270,8 +225,9 @@
         </td>
       </tr>
       <tr>
-        <td>Lorem</td>
-        <td>Ipsum</td>
+        <td>Tastatura</td>
+        <td>3</td>
+		<td>150</td>
         <td>
           <a href="">
             <span class="label label-success">
@@ -297,72 +253,236 @@
 
     <div class="row">
       <div class="col-md-3">
-        <h2>Edit a resource2</h2>
+        <h2>Editeaza accesorii</h2>
         <form action="" method="">
           <div class="form-group">
-            <label for="attribute1">Attribute 1</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Attribute 1">
+            <label for="attribute1">Produs</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Atributul 1">
           </div>
           <div class="form-group">
-            <label for="attribute2">Attribute 2</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Attribute 2">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Atributul 2">
           </div>
-          <button type="submit" class="btn btn-info">Save</button>
+		  <div class="form-group">
+		  <label for="attribute3">Pret</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Atributul 3">
+          </div>
+          <button type="submit" class="btn btn-info">Salveaza</button>
         </form>
       </div>
 
 
       <div class="col-md-3 col-md-offset-6">
-        <h2>Add a resource2</h2>
+        <h2>Adauga accesorii</h2>
         <form action="" method="">
           <div class="form-group">
-            <label for="attribute1">Attribute 1</label>
-            <input type="text" class="form-control" id="attribute1" placeholder="Attribute 1">
+            <label for="attribute1">Produs</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Atributul 1">
           </div>
           <div class="form-group">
-            <label for="attribute2">Attribute 2</label>
-            <input type="text" class="form-control" id="attribute2" placeholder="Attribute 2">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Atributul 2">
           </div>
-          <button type="submit" class="btn btn-success">Add</button>
+		  <div class="form-group">
+			<label for="attribute3">Pret</label>
+			<input type="text" class="form-control" id="attirbute3" placeholder="Atriutul 3">
+          <button type="submit" class="btn btn-success">Adauga</button>
         </form>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <h2>Show a resource2</h2>
+        <h2>Arata un accesoriu</h2>
       </div>
       <div class="col-md-2">
-        <img src="http://lorempixel.com/200/200/technics/?id=2" class="img-thumbnail"/>
+        <img src="http://www.iware.ro/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/a/casti_beats_by_dre_solo_hd_red_03.png" class="img-thumbnail"/>
       </div>
       <div class="col-md-10">
-        <h1>Attribute 1</h1>
-        <p>Attribute 2, Attribute 3</p>
-        <h3>Sub resource</h3>
-        <table class="table table-bordered table-striped">
-          <tr>
-            <th>Attribute 5</th>
-            <th>Attribute 6</th>
-          </tr>
-          <tr>
-            <td>Lorem ipsum</td>
-            <td>Lorem</td>
-          </tr>
-          <tr>
-            <td>Lorem ipsum dolor</td>
-            <td>Sir</td>
-          </tr>
-        </table>
+        <h1>Beats</h1>
+        <p>2, 500</p>
       </div>
     </div>
   </div>
 
   <hr/>
--->
+  
+    <hr/>
+
+  <!-- /resources1 -->
+  <div class="container">
+    <h1 id="Telefoane">Telefoane</h1>
+    <h2>Lista Telefoane</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Producator</th>
+        <th>ID</th>
+        <th>Pret</th>
+        <th style="width:210px;">Options</th>
+      </tr>
+      <tr>
+        <td>Samsung</td>
+        <td>2</td>
+        <td>2000</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>iPhone 4s</td>
+        <td>1</td>
+        <td>700</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Nokia</td>
+        <td>3</td>
+        <td>1100</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>HTC One</td>
+        <td>4</td>
+        <td>1800</td>
+        <td>
+          <a href="">
+            <span class="label label-success">
+              Open
+              <span class="glyphicon glyphicon-folder-open"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-primary">
+              Edit
+              <span class="glyphicon glyphicon-edit"></span>
+            </span>
+          </a>
+          <a href="">
+            <span class="label label-danger">
+              Remove
+              <span class="glyphicon glyphicon-remove"></span>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Editeaza telefoane</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Producator</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Atributul 1">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Atributul 2">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Pret</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Atributul 3">
+          </div>
+          <button type="submit" class="btn btn-info">Salveaza</button>
+        </form>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-6">
+        <h2>Adauga produse</h2>
+        <form action="" method="">
+          <div class="form-group">
+            <label for="attribute1">Producator</label>
+            <input type="text" class="form-control" id="attribute1" placeholder="Atributul 1">
+          </div>
+          <div class="form-group">
+            <label for="attribute2">ID</label>
+            <input type="text" class="form-control" id="attribute2" placeholder="Atributul 2">
+          </div>
+          <div class="form-group">
+            <label for="attribute3">Pret</label>
+            <input type="text" class="form-control" id="attribute3" placeholder="Atributul 3">
+          </div>
+          <button type="submit" class="btn btn-success">Adauga</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Afiseaza telefon</h2>
+      </div>
+      <div class="col-md-2">
+        <img src="http://store.storeimages.cdn-apple.com/4939/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone6s/plus/iphone6s-plus-box-rosegold-2015_GEO_US?wid=478&hei=595&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1441799810589" class="img-thumbnail"/>
+      </div>
+      <div class="col-md-10">
+        <h1>iPhone 6s</h1>
+        <p>3, 3500</p>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
   <div class="container">
     <footer class="footer">
       <p class="text-muted pull-left">AWJ Base Project &copy; 2015-2016</p>
-      <p class="text-muted pull-right">Sirbu Nicolae-Cezar, 331AA</p>
+      <p class="text-muted pull-right">Oprea Mario Grig Jr, 332AB</p>
     </footer>
   </div>
 

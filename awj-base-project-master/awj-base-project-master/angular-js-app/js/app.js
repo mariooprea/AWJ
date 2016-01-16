@@ -1,10 +1,10 @@
 var app = angular.module('blog', [ ]);
 
 app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
-  $scope.helloWorld = 'Aplicatii Web cu suport Java!';
+  $scope.helloWorld = 'Aplicatii Web cu suport Java!!';
 
-  $scope.persoane = [];
-  $scope.keys = [];
+  $scope.persoane = [ ];
+  $scope.keys = [ ];
 
   $scope.person = {};
   $scope.editPerson = {};
@@ -20,7 +20,7 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
 
 
   $scope.addPersoana = function(person) {
-    $scope.persoane.data.push(person);
+    $scope.persoane.push(person);
     $http.post('http://localhost:8080/persoana', person);
     $scope.person = {};
   };
